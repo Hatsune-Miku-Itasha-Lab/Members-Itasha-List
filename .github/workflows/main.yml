@@ -1,57 +1,38 @@
-name: Run Python Script on Push
+name: Run Python Script and Push Changes
 
-# 触发条件：在 push 到任意分支时触发
-on: 
+on:
   push:
     branches:
-      - '**'
+      - main
 
 jobs:
-  run-python-script:
+  run-script:
     runs-on: ubuntu-latest
 
     steps:
-      # 检出代码
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      # 判断是否是由 github-actions[bot] 推送的
-      - name: Check if push is from github-actions[bot]
-        id: check_actor
-        run: |
-          if [[ "${{ github.actor }}" == "github-actions[bot]" ]]; then
-            echo "This push was made by github-actions[bot]."
-            exit 0
-          fi
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
 
-      # 设置 Python 版本
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r scripts/requirements.txt
 
-      # 安装依赖项
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r scripts/requirements.txt
+    - name: Run Python script
+      run: |
+        python scripts/upload.py
 
-      # 运行 Python 脚本
-      - name: Run Python script
-        run: python scripts/upload.py
-      
-      # 配置 Git 用户信息
-      - name: Set up Git user info
-        run: |
-          git config --global user.name "StarRealMan"
-          git config --global user.email "965669036@qq.com"
-      
-      # 添加更改到 Git
-      - name: Commit changes
-        run: |
-          git add docs/
-          git commit -m "Update html via GitHub Actions"
-      
-      # 推送更改到仓库
-      - name: Push changes
-        run: git push origin main
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add .
+        git commit -m 'Automated changes from GitHub Actions' || echo "No changes to commit"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
