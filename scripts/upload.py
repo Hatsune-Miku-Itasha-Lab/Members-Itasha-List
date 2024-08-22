@@ -1,6 +1,6 @@
 import os
 
-images_dir = 'docs/images'
+# images_dir = 'docs/images'
 # base_lines = [
 #     "const imagesPerPage = 20;", 
 #     "let currentPage = 1;", 
