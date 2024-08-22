@@ -55,7 +55,6 @@ jobs:
       
       # 推送更改到仓库
       - name: Push changes
-        run: |
-          git remote set-url origin https://${{ secrets.PAT_TOKEN }}@github.com/Hatsune-Miku-Itasha-Lab/Members-Itasha-List.git
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT_TOKEN }}
