@@ -49,6 +49,7 @@ jobs:
       # 添加更改到 Git
       - name: Commit changes
         run: |
+          git checkout -b test-branch
           git add docs/
           git commit -m "Update html via GitHub Actions"
       
@@ -56,6 +57,6 @@ jobs:
       - name: Push changes
         run: |
           git remote set-url origin https://${{ secrets.PAT_TOKEN }}@github.com/Hatsune-Miku-Itasha-Lab/Members-Itasha-List.git
-          git push
+          git push -u origin test-branch
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
