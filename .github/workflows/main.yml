@@ -9,17 +9,26 @@ on:
 jobs:
   run-python-script:
     runs-on: ubuntu-latest
-    
+
     steps:
       # 检出代码
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
+      # 判断是否是由 github-actions[bot] 推送的
+      - name: Check if push is from github-actions[bot]
+        id: check_actor
+        run: |
+          if [[ "${{ github.actor }}" == "github-actions[bot]" ]]; then
+            echo "This push was made by github-actions[bot]."
+            exit 0
+          fi
+
       # 设置 Python 版本
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.x'
 
       # 安装依赖项
       - name: Install dependencies
@@ -31,7 +40,7 @@ jobs:
       - name: Run Python script
         run: python scripts/upload.py
       
-      # 配置 Git 用户信息（必要时）
+      # 配置 Git 用户信息
       - name: Set up Git user info
         run: |
           git config --global user.name "github-actions[bot]"
@@ -40,11 +49,13 @@ jobs:
       # 添加更改到 Git
       - name: Commit changes
         run: |
-          git add docs/
-          git commit -m "Update test.html via GitHub Actions"
+          git add test.html
+          git commit -m "Update html via GitHub Actions"
       
       # 推送更改到仓库
       - name: Push changes
-        run: git push origin webpage
+        run: |
+          git remote set-url origin https://<PAT_TOKEN>@github.com/Hatsune-Miku-Itasha-Lab/Members-Itasha-List.git
+          git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
