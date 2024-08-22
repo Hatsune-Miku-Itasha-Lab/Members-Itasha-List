@@ -1,22 +1,49 @@
 import os
 
-# 指定 images 目录的路径
-images_dir = 'images'
+images_dir = 'docs/images'
+# base_lines = [
+#     "const imagesPerPage = 20;", 
+#     "let currentPage = 1;", 
+#     "const totalPages = Math.ceil(images.length / imagesPerPage);", 
+#     "function renderImages() {", 
+#     "    const imageList = document.getElementById('image-list');", 
+#     "    imageList.innerHTML = ''; // 清空当前页面的图片", 
+#     "    const startIndex = (currentPage - 1) * imagesPerPage;", 
+#     "    const endIndex = startIndex + imagesPerPage;", 
+#     "    const currentImages = images.slice(startIndex, endIndex);", 
+#     "    currentImages.forEach(image => {", 
+#     "        const imgElement = document.createElement('img');", 
+#     "        imgElement.src = image;", 
+#     "        imageList.appendChild(imgElement);", 
+#     "    });", 
+#     "    document.getElementById('page-info').textContent = `第 ${currentPage} 页，共 ${totalPages} 页`;", 
+#     "    // 设置按钮状态", 
+#     "    document.getElementById('prev-btn').disabled = currentPage === 1;", 
+#     "    document.getElementById('next-btn').disabled = currentPage === totalPages;", 
+#     "}", 
+#     "function prevPage() {", 
+#     "    if (currentPage > 1) {", 
+#     "        currentPage--;", 
+#     "        renderImages();", 
+#     "    }", 
+#     "}", 
+#     "function nextPage() {", 
+#     "    if (currentPage < totalPages) {", 
+#     "        currentPage++;", 
+#     "        renderImages();", 
+#     "    }", 
+#     "}", 
+#     "// 初始渲染", 
+#     "renderImages();", 
+# ]
 
-# 获取目录中的所有文件名
-# file_names = os.listdir(images_dir)
+# with open('docs/'script.js', 'w') as f:
+#     f.write('// script.js\n')
+#     f.write('const images = [\n')
+#     for file_name in os.listdir(images_dir):
+#         file_name = os.path.join(file_name, images_dir)
+#         f.write(f"'{file_name}', \n")
+#     f.write('];\n')
+#     file.writelines(base_lines)
 
-# # 创建 HTML 文件并写入文件名
-# with open('docs/index.html', 'w') as f:
-#     f.write('<html><body>\n')
-#     f.write('<h1>Image Files</h1>\n')
-#     f.write('<ul>\n')
-    
-#     # 将每个文件名写入 HTML 列表
-#     for file_name in file_names:
-#         f.write(f'<li>{file_name}</li>\n')
-    
-#     f.write('</ul>\n')
-#     f.write('</body></html>\n')
-
-print("HTML file 'docs/index.html' created successfully.")
+print("js file 'docs/script.js' created successfully.")
