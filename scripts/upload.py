@@ -4,7 +4,7 @@ import os
 images_dir = 'images'
 
 # 获取目录中的所有文件名
-file_names = os.listdir(images_dir)
+# file_names = os.listdir(images_dir)
 
 # 创建 HTML 文件并写入文件名
 with open('docs/index.html', 'w') as f:
