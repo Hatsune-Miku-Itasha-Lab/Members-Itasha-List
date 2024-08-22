@@ -49,7 +49,7 @@ jobs:
       # 添加更改到 Git
       - name: Commit changes
         run: |
-          git add test.html
+          git add docs/
           git commit -m "Update html via GitHub Actions"
       
       # 推送更改到仓库
