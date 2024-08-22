@@ -43,18 +43,15 @@ jobs:
       # 配置 Git 用户信息
       - name: Set up Git user info
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "StarRealMan"
+          git config --global user.email "965669036@qq.com"
       
       # 添加更改到 Git
       - name: Commit changes
         run: |
-          git checkout -b test-branch
           git add docs/
           git commit -m "Update html via GitHub Actions"
       
       # 推送更改到仓库
       - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PAT_TOKEN }}
+        run: git push origin main
