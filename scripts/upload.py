@@ -7,7 +7,7 @@ images_dir = 'images'
 file_names = os.listdir(images_dir)
 
 # 创建 HTML 文件并写入文件名
-with open('test.html', 'w') as f:
+with open('docs/index.html', 'w') as f:
     f.write('<html><body>\n')
     f.write('<h1>Image Files</h1>\n')
     f.write('<ul>\n')
@@ -19,4 +19,4 @@ with open('test.html', 'w') as f:
     f.write('</ul>\n')
     f.write('</body></html>\n')
 
-print("HTML file 'test.html' created successfully.")
+print("HTML file 'docs/index.html' created successfully.")
