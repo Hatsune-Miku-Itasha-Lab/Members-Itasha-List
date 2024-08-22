@@ -57,6 +57,5 @@ jobs:
       - name: Push changes
         run: |
           git remote set-url origin https://${{ secrets.PAT_TOKEN }}@github.com/Hatsune-Miku-Itasha-Lab/Members-Itasha-List.git
-          git push -u origin test-branch
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
