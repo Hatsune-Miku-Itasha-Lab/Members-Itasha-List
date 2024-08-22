@@ -1,65 +1,56 @@
-/* styles.css */
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    text-align: center;
 }
 
-header {
-    margin-bottom: 20px;
-}
-
-.teaser {
+#logo, #teaser {
     width: 100%;
-    max-width: 1000px;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-.gallery-container {
-    width: 80%;
-    max-width: 1200px;
+    display: block;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.image-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .image-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .image-item img {
-    width: 100%;
-    max-width: 600px;
+    max-width: 100%;
     height: auto;
 }
 
-.image-item .image-name {
+.image-details {
     margin-top: 10px;
     font-size: 1.2rem;
     color: #333;
+    white-space: pre-wrap;
+}
+
+.filters {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.filters label {
+    margin-right: 10px;
+}
+
+.filters select {
+    margin-right: 20px;
+    padding: 5px;
 }
 
 .pagination {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
+}
+
+.pagination input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
 }
 
 .pagination button {
